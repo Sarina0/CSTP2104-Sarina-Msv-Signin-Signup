@@ -22,9 +22,8 @@ namespace CSTP2104.Assignment2
             {
                 string stringList = string.Join(",", task1.ToArray());
                 Console.WriteLine("Writing to console task " + stringList);
-                return stringList;
-                // writing to the text file
                 Task Task3 = WriteFileAsync(stringList);
+                return stringList;
             });
 
             Console.ReadLine();
