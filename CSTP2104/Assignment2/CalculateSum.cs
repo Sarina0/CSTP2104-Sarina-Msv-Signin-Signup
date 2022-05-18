@@ -11,58 +11,52 @@ namespace CSTP2104.Assignment2
     {
         public void RunTasks()
         {
-            Task.Run(() => Console.WriteLine("Sum of Number task!"));
-            new Thread(() => Console.WriteLine("Start")).Start();
-            int sum = 0;
-            Task task1 = Task.Run(() =>
-            {
-                for (int j = 1; j <= 10; j++)
-                {
-                    sum = sum + j;
-                    PrintSum(sum);
-                   
+            List<int> task1 = new List<int>();
 
-                }
+            task1 = CalSum();
+
+            // turning this function to a task and write to console
+            //string stringList = string.Join(",", task1.ToArray());
+
+            Task<string> task2 = Task.Run(() =>
+            {
+                string stringList = string.Join(",", task1.ToArray());
+                Console.WriteLine("Writing to console task " + stringList);
+                return stringList;
+                // writing to the text file
+                Task Task3 = WriteFileAsync(stringList);
             });
-            
-        }
-       
 
-        public void PrintSum(int s)
+            Console.ReadLine();
+
+        }
+        public static async Task WriteFileAsync(string data)
         {
-            Console.Write("\nThe Sum is => {0}\n", s);
-            
+            Console.WriteLine("Async Write File has started.");
+            using (var sw = new StreamWriter(@"C:\Users\sarin\source\repos\CSTP2104\CSTP2104\Assignment2\SumReport.txt"))
+            {
+                await sw.WriteAsync(data);
+            }
+            Console.WriteLine("Async Write File has completed.");
         }
 
-
-        public static void WriteProgressToFileAsync(int txt)
+        public static List<int> CalSum()
         {
-            string path = @"C:\Users\sarin\source\repos\CSTP2104\CSTP2104\Assignment2\SumReport.txt";
-            try
+            int sum = 0;
+            var SumNum = new List<int>();
+            //StringBuilder myStringBuilder = new StringBuilder("1. " + content);
+            for (int i = 2; i <= 10; i++)
             {
-                File.WriteAllText(path, txt.ToString());
-                Console.WriteLine("String written to file successfully.");
-                try
-                {
-                    // Open the text file using a stream reader.
-                    using (var sr = new StreamReader(path))
-                    {
-                        // Read the stream as a string, and write the string to the console.
-                        Console.WriteLine(sr.ReadToEnd());
-                    }
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine("The file could not be read:");
-                    Console.WriteLine(e.Message);
-                }
+                sum = sum + i;
+                Console.WriteLine("the sum is {0}", sum);
+                SumNum.Add(sum);
+                //myStringBuilder.Append($"\r\n{i}. {content}");
+            }
+            return SumNum;
 
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine(err.Message);
-            }
         }
+
+
     }
 }
 
