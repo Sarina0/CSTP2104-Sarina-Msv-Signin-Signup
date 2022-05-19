@@ -13,6 +13,11 @@ namespace CSTP2104.Assignment1
         public static void ReportProgress(ProgressReporter del)
         {
             //Console.WriteLine(del);
+            
+            // === you should set your delegate to desired targets WriteToConsole and WriteToFile before going into the loop ===
+            //     remember I want all the code related to the assignment in one file
+            //     how is this being called?
+            
             Console.WriteLine(" you have added your report please waite for process..");
             del(55);
             Console.WriteLine("this is del " + del);
@@ -20,7 +25,8 @@ namespace CSTP2104.Assignment1
             {
 
                 //Console.WriteLine(i);
-                Console.WriteLine(i * 10);
+                Console.WriteLine(i * 10); // === you should be calling your deletgate here instead of writing to the console ===
+                                           //     letting the delegate to the work for both targets
                 //Console.WriteLine("time");
                 Thread.Sleep(100);
             }
