@@ -1,0 +1,38 @@
+﻿CREATE TABLE tbl_Student(
+[FirstName] varchar(32),
+[LastName] varchar(32),
+[UserId] varchar(32),
+[Email] varchar(32),
+[Address] varchar(32),
+[City] varchar(32),
+[State] varchar(32),
+[Country] varchar(32),
+[ZipCode] int,
+[CountryCode] varchar(32),
+[AreaCode] varchar(32),
+[PhoneNumber] int,
+
+)
+
+INSERT INTO tbl_Student(FirstName, LastName, UserId, Email, Address, City,
+State, Country, ZipCode, CountryCode, AreaCode, PhoneNumber)
+VALUES ('Tom', 'Hardy' , 'P001', 'tomhardy@gmail.com', '1011 Hawthorne Drive','Walnut Creek' ,'CA', 'USA', 54596, 1, 232, 9783422)
+
+SELECT *  FROM tbl_Student 
+
+where CountryCode =1;
+
+SELECT *  FROM tbl_Student 
+
+where (PhoneNumber is not null and CountryCode =1);
+
+SELECT *  FROM tbl_Student 
+
+where (State = 'CA' and PhoneNumber is not null and AreaCode =409 );
+
+
+SELECT *  FROM tbl_Student 
+
+where (Email is not null and State = 'CA' and City != 'San Francisco');
+
+
