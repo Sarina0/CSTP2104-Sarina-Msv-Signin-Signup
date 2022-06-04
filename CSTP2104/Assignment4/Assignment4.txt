@@ -62,3 +62,6 @@ VALUES (19234, 'John', 'Smith', '2002-3-09', '321 Knight street Vancouver BC', 3
 
 INSERT INTO Address(Street, Unit, PostalCode, City, Province, Country, Student_ID)
 VALUES('321 Knight street Vancouver BC', 321, 'V3J5L2', 'Vancouver', 'BC', 'Canada', 19234)
+
+INSERT INTO COOP_Job_Application( Title, Date, Requirements, JobType)
+VALUES( 'Web development', '2022-06-01' ,'Building application with c#', 'Full time')
