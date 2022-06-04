@@ -1,0 +1,64 @@
+﻿SET IDENTITY_INSERT Company ON
+CREATE TABLE Company(
+[Company_ID] INT IDENTITY(1,1) PRIMARY KEY ,
+[Name] varchar(32) NOT NULL
+)
+
+CREATE TABLE COOP_Job_Application(
+[Job_ID] INT IDENTITY(1,1) PRIMARY KEY,
+[Title] varchar(32),
+[Date] varchar(32),
+[Requirements] varchar(1000),
+[JobType] varchar(20),
+)
+
+
+
+CREATE TABLE Student(
+[Student_ID] INT PRIMARY KEY,
+[First] varchar(32),
+[Last] varchar(32),
+[DateOfBirth] varchar(40),
+[Address] varchar(32),
+[PhoneNumber] int,
+UNIQUE(PhoneNumber)
+);
+
+
+CREATE TABLE Address(
+[Street] varchar(50),
+[Unit] int,
+[PostalCode] varchar(6),
+[City] varchar(32),
+[Province] varchar(32),
+[Country] varchar(32),
+[Student_ID] INT IDENTITY(1,1) PRIMARY KEY,
+Studen_ID int FOREIGN KEY REFERENCES Student(Student_ID)
+);
+
+
+
+
+CREATE TABLE Student_Application(
+[Course_ID] int,
+[Course_Name] varchar(32),
+[Title] varchar(32),
+[Student_ID] int,
+UNIQUE(Course_ID)
+);
+/////
+
+INSERT INTO Student_Application(Course_ID, Course_Name, Title, Student_ID)
+VALUES (244, 'Web application', 'Computer Science', 19234)
+
+INSERT INTO Company(Company_ID, Name)
+VALUES (38212, 'Amazon')
+
+INSERT INTO Company(Company_ID, Name)
+VALUES (38212, 'Amazon')
+
+INSERT INTO Student(Student_ID, First, Last, DateOfBirth, Address, PhoneNumber)
+VALUES (19234, 'John', 'Smith', '2002-3-09', '321 Knight street Vancouver BC', 3874432)
+
+INSERT INTO Address(Street, Unit, PostalCode, City, Province, Country, Student_ID)
+VALUES('321 Knight street Vancouver BC', 321, 'V3J5L2', 'Vancouver', 'BC', 'Canada', 19234)
