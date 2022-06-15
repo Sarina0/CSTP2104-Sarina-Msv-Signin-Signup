@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
-
+using CSTP2104.Shared;
 
 public delegate void ProgressReporter(int rep);
 namespace CSTP2104.Assignment1
 {
-    class UtilReporter
+    class UtilReporter : AssignmentBase
     {
         public static void ReportProgress(ProgressReporter del)
         {
@@ -73,6 +73,27 @@ namespace CSTP2104.Assignment1
             {
                 Console.WriteLine(err.Message);
             }
+          
+
+           }
+
+        protected override void Execute()
+        {
+            TestDelegate();
+        }
+        public void TestDelegate()
+        {
+            //Initialing the Report
+           ProgressReporter del1 = UtilReporter.InitialReport;
+           UtilReporter.ReportProgress(del1);
+
+           //Writing to console
+           ProgressReporter del2 = UtilReporter.WriteProgressToConsole;
+           UtilReporter.ReportProgress(del2);
+
+           //Writing to the file
+           ProgressReporter del3 = UtilReporter.WriteProgressToFileAsync;
+           UtilReporter.ReportProgress(del3);
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿System.ArgumentException
+  HResult=0x80070057
+  Message=Keyword not supported: 'trustservercert
+ificate'.
+  Source=Microsoft.Data.SqlClient
+  StackTrace:
+   at Microsoft.Data.Common.DbConnectionOptions.ParseInternal(Dictionary`2 parsetable, String connectionString, Boolean buildChain, Dictionary`2 synonyms, Boolean firstKey)
+   at Microsoft.Data.Common.DbConnectionOptions..ctor(String connectionString, Dictionary`2 synonyms)
+   at Microsoft.Data.SqlClient.SqlConnectionString..ctor(String connectionString)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnectionOptions(String connectionString, DbConnectionOptions previous)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.GetConnectionPoolGroup(DbConnectionPoolKey key, DbConnectionPoolGroupOptions poolOptions, DbConnectionOptions& userConnectionOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.ConnectionString_Set(DbConnectionPoolKey key)
+   at Microsoft.Data.SqlClient.SqlConnection.set_ConnectionString(String value)
+   at Microsoft.Data.SqlClient.SqlConnection..ctor(String connectionString)
+   at CSTP2104.Assignment5.sqlDatabase.GetConnection() in C:\Users\sarin\Source\Repos\CSTP2104-Sarina-Msv\CSTP2104\Assignment5\sqlDatabase.cs:line 128
+   at CSTP2104.Assignment5.sqlDatabase.Execute() in C:\Users\sarin\Source\Repos\CSTP2104-Sarina-Msv\CSTP2104\Assignment5\sqlDatabase.cs:line 149
+   at CSTP2104.Shared.AssignmentBase.Run() in C:\Users\sarin\Source\Repos\CSTP2104-Sarina-Msv\CSTP2104\Shared\AssignmentBase.cs:line 15
+   at CSTP2104.Program.Main(String[] args) in C:\Users\sarin\Source\Repos\CSTP2104-Sarina-Msv\CSTP2104\Program.cs:line 23

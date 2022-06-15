@@ -4,10 +4,10 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using CSTP2104.Shared;
 namespace CSTP2104.Assignment2
 {
-    class CalculateSum
+    class CalculateSum : AssignmentBase
     {
         public void RunTasks()
         {
@@ -53,6 +53,10 @@ namespace CSTP2104.Assignment2
             }
             return SumNum;
 
+        }
+        protected override void Execute()
+        {
+            RunTasks();
         }
 
 
