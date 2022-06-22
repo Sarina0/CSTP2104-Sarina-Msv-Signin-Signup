@@ -156,7 +156,7 @@ namespace CSTP2104.Assignment5
            
             var sqlConnection = GetConnection();
 
-            string sqlInsert = string.Format("INSERT INTO Student (Student_ID,First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')",id, first,last,date,add,phone);
+            string sqlInsert = string.Format("INSERT INTO Student (Student_ID, First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')",id, first,last,date,add,phone);
             
             SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
             sqlConnection.Open();
@@ -165,13 +165,20 @@ namespace CSTP2104.Assignment5
 
             Console.WriteLine("rowsAffected = {0}", rowsAffected);
         }
-        private void StudentUpdate(string first, string last)
+        private void StudentUpdate( string first, string last)
         {
 
-            var sqlConnection = GetConnection();
 
+
+            int id = 21443;
+
+
+
+
+            var sqlConnection = GetConnection();
             
-            string sqlInsert = string.Format("UPDATE Student SET '{0}' = @First, '{1}' = @Last Where First= @First and Last = @Last", first, last);
+            string sqlInsert = string.Format("UPDATE Student SET First = '{0}', Last = '{1}'  Where Student_ID = 21443;", first, last);
+
 
             SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
             sqlConnection.Open();
@@ -179,7 +186,7 @@ namespace CSTP2104.Assignment5
             sqlConnection.Close();
 
             Console.WriteLine("rowsAffected = {0}", rowsAffected);
-            
+
         }
         protected override void Execute()
         {
@@ -194,7 +201,7 @@ namespace CSTP2104.Assignment5
             expConnString.StudentGet();
             //expConnString.StudentAdd(21443, "Adriana", "Baker", "2000-01-03", "Vancouver victoria dr 36th ave", 938957461);
             //expConnString.StudentGet();
-            expConnString.StudentUpdate("UpdateAdriana", "UpdateBaker");
+            expConnString.StudentUpdate("Sara", "Baker2");
             expConnString.StudentGet();
             //expConnString.DeleteStudent();
 
