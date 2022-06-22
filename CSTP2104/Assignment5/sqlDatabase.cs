@@ -138,19 +138,6 @@ namespace CSTP2104.Assignment5
 
         }
 
-        /*private void ReadFromConfig()
-        {
-            foreach (ConnectionStringSettings connectionString in ConfigurationManager.ConnectionStrings)
-            {
-                Console.WriteLine(connectionString.Name);
-                Console.WriteLine(connectionString.ProviderName);
-                Console.WriteLine(connectionString.ConnectionString);
-
-                this.devConnectionString = connectionString.ConnectionString;
-            }
-
-
-        }*/
         private void StudentAdd(int id, string first, string last, string date, string add, int phone)
         {
            
