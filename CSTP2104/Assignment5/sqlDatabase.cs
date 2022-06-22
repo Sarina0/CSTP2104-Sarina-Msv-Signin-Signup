@@ -55,7 +55,7 @@ namespace CSTP2104.Assignment5
             Console.WriteLine("rowsAffected = {0}", rowsAffected);
         }
 
-        public void GetResultSet()
+        public void StudentGet()
         {// string birth, string address, int num
             string sqlSelect = "SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student";
             SqlConnection sqlConnection = this.GetConnection();
@@ -66,8 +66,18 @@ namespace CSTP2104.Assignment5
             {
                 while (dataReader.Read())
                 {
-                    Console.WriteLine("Student ID using key: {0}", dataReader["ID"]);
-                    Console.WriteLine("Student ID using GetString: {0}", dataReader.GetString(0));
+                    Console.WriteLine("Student ID using key: {0}", dataReader["Student_ID"]);
+                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
+                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
+                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
+                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
+                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
+                    Console.WriteLine("");
+
+                    /*Console.WriteLine("Student Last Name using GetString: {0}", dataReader.GetString(2));
+                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader.GetString(3));
+                    Console.WriteLine("Student Address using GetString: {0}", dataReader.GetString(4));
+                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader.GetInt32(5));*/
                 }
             }
 
@@ -128,18 +138,49 @@ namespace CSTP2104.Assignment5
 
         }
 
-         /*private void ReadFromConfig()
-         {
-             foreach (ConnectionStringSettings connectionString in ConfigurationManager.ConnectionStrings)
-             {
-                 Console.WriteLine(connectionString.Name);
-                 Console.WriteLine(connectionString.ProviderName);
-                 Console.WriteLine(connectionString.ConnectionString);
+        /*private void ReadFromConfig()
+        {
+            foreach (ConnectionStringSettings connectionString in ConfigurationManager.ConnectionStrings)
+            {
+                Console.WriteLine(connectionString.Name);
+                Console.WriteLine(connectionString.ProviderName);
+                Console.WriteLine(connectionString.ConnectionString);
 
-                 this.devConnectionString = connectionString.ConnectionString;
-             }
+                this.devConnectionString = connectionString.ConnectionString;
+            }
 
-         }*/
+
+        }*/
+        private void StudentAdd(int id, string first, string last, string date, string add, int phone)
+        {
+           
+            var sqlConnection = GetConnection();
+
+            string sqlInsert = string.Format("INSERT INTO Student (Student_ID,First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')",id, first,last,date,add,phone);
+            
+            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
+            sqlConnection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            Console.WriteLine("rowsAffected = {0}", rowsAffected);
+        }
+        private void StudentUpdate(string first, string last)
+        {
+
+            var sqlConnection = GetConnection();
+
+            
+            string sqlInsert = string.Format("UPDATE Student SET '{0}' = @First, '{1}' = @Last Where First= @First and Last = @Last", first, last);
+
+            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
+            sqlConnection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            Console.WriteLine("rowsAffected = {0}", rowsAffected);
+            
+        }
         protected override void Execute()
         {
             var expConnString = new sqlDatabase();
@@ -147,8 +188,15 @@ namespace CSTP2104.Assignment5
 
             GetConnection();
             expConnString.OpenConnection();
-
-            expConnString.DeleteStudent();
+            //expConnString.GetSchemaAndResult();
+            // expConnString.SelectStudentData();
+            //expConnString.StudentAdd(21443, "Adriana", "Baker", "2000-01-03", "Vancouver victoria dr 36th ave", 938957461);
+            expConnString.StudentGet();
+            //expConnString.StudentAdd(21443, "Adriana", "Baker", "2000-01-03", "Vancouver victoria dr 36th ave", 938957461);
+            //expConnString.StudentGet();
+            expConnString.StudentUpdate("UpdateAdriana", "UpdateBaker");
+            expConnString.StudentGet();
+            //expConnString.DeleteStudent();
 
         }
 
