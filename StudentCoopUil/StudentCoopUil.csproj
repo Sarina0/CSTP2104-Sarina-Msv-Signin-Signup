@@ -7,7 +7,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\StudentCoopBL\StudentCoopBL.csproj" />
-		<StartupObject>StudentCoopApp.Program</StartupObject>
+		<ProjectReference Include="..\StudentCoopDal\StudentCoopDal.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -73,11 +73,6 @@ namespace CSTP2104.Assignment5
                     Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
                     Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
                     Console.WriteLine("");
-
-                    /*Console.WriteLine("Student Last Name using GetString: {0}", dataReader.GetString(2));
-                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader.GetString(3));
-                    Console.WriteLine("Student Address using GetString: {0}", dataReader.GetString(4));
-                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader.GetInt32(5));*/
                 }
             }
 

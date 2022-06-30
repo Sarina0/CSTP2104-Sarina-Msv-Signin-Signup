@@ -1,16 +1,20 @@
 ﻿using System;
+using StudentCoopBL;
+
+using StudentCoopCommon;
 
 namespace StudentCoopApp
 {
     class Program
     {
-        static void Main(string[] args)
+       public  static void Main(string[] args)
         {
-            var program = new Program();
-            program.Add_WhenStudentIsAdded_ItShouldBeAbleToGet();
+            Console.WriteLine("Hello student coop app");
+            //var program = new Program();
+            //program.Add_WhenStudentIsAdded_ItShouldBeAbleToGet();
         }
 
-        public void Add_WhenStudentIsAdded_ItShouldBeAbleToGet()
+        /*public void Add_WhenStudentIsAdded_ItShouldBeAbleToGet()
         {
             var studentManager = new StudentManager();
             studentManager.Add(new Student() { ID = "1001", FirstName = "qwer" });
@@ -21,6 +25,6 @@ namespace StudentCoopApp
             {
                 throw new Exception("Add test failed");
             }
-        }
+        }*/
     }
 }
