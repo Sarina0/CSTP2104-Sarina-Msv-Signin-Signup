@@ -1,10 +1,7 @@
-﻿using StudentCoopCommon;
+﻿using System;
+using 
 
-using StudentCoopDal;
-
-using System;
-using System.Collections.Generic;
-using System.Text;
+using StudentCoopBL;
 
 namespace StudentCoopBL
 {

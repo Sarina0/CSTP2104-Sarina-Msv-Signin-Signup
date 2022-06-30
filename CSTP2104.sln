@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSTP2104", "CSTP2104\CSTP2104.csproj", "{0AC9AE6D-055E-495D-851E-A609249AAD63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSTP2104", "CSTP2104\CSTP2104.csproj", "{0AC9AE6D-055E-495D-851E-A609249AAD63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Student_Proj", "Student_Proj", "{74188D51-FCCA-4369-99D2-B059745446A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentCoopBL", "StudentCoopBL\StudentCoopBL.csproj", "{6B2CCF6F-A05B-4A03-A779-C49F3299F214}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentCoopApp", "StudentCoopApp\StudentCoopApp.csproj", "{5A1032C5-C03A-49C0-B8ED-541B31095793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentCoopCommon", "StudentCoopCommon\StudentCoopCommon.csproj", "{08CDE53F-3970-48DE-B541-B133952199B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentCoopDal", "StudentCoopDal\StudentCoopDal.csproj", "{56795A06-0413-440B-B5E1-98861C2ECF17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,31 @@ Global
 		{0AC9AE6D-055E-495D-851E-A609249AAD63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AC9AE6D-055E-495D-851E-A609249AAD63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AC9AE6D-055E-495D-851E-A609249AAD63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2CCF6F-A05B-4A03-A779-C49F3299F214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2CCF6F-A05B-4A03-A779-C49F3299F214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2CCF6F-A05B-4A03-A779-C49F3299F214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2CCF6F-A05B-4A03-A779-C49F3299F214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A1032C5-C03A-49C0-B8ED-541B31095793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A1032C5-C03A-49C0-B8ED-541B31095793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A1032C5-C03A-49C0-B8ED-541B31095793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A1032C5-C03A-49C0-B8ED-541B31095793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CDE53F-3970-48DE-B541-B133952199B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CDE53F-3970-48DE-B541-B133952199B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CDE53F-3970-48DE-B541-B133952199B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CDE53F-3970-48DE-B541-B133952199B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56795A06-0413-440B-B5E1-98861C2ECF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56795A06-0413-440B-B5E1-98861C2ECF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56795A06-0413-440B-B5E1-98861C2ECF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56795A06-0413-440B-B5E1-98861C2ECF17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B2CCF6F-A05B-4A03-A779-C49F3299F214} = {74188D51-FCCA-4369-99D2-B059745446A9}
+		{5A1032C5-C03A-49C0-B8ED-541B31095793} = {74188D51-FCCA-4369-99D2-B059745446A9}
+		{08CDE53F-3970-48DE-B541-B133952199B9} = {74188D51-FCCA-4369-99D2-B059745446A9}
+		{56795A06-0413-440B-B5E1-98861C2ECF17} = {74188D51-FCCA-4369-99D2-B059745446A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {880CAF71-16D6-489D-9C55-91A4955CE652}

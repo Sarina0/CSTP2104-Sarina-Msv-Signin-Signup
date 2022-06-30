@@ -1,10 +1,6 @@
-﻿using StudentCoopBL;
+﻿using System;
 
-using StudentCoopCommon;
-
-using System;
-
-namespace StudentCoopUil
+namespace StudentCoopApp
 {
     class Program
     {

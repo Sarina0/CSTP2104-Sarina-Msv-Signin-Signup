@@ -1,10 +1,9 @@
-﻿namespace StudentCoopDal
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿using System;
 
+namespace StudentCoopDal
+{
     public class CompanyRepository
     {
+        
     }
 }
