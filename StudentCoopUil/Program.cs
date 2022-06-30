@@ -1,5 +1,7 @@
 ﻿using System;
-
+using StudentCoopBL;
+using StudentCoopCommon;
+using StudentCoopDal;
 namespace StudentCoopUil
 {
     class Program
@@ -13,9 +15,11 @@ namespace StudentCoopUil
         public void Add_WhenStudentIsAdded_ItShouldBeAbleToGet()
         {
             var studentManager = new StudentManager();
-            studentManager.Add(new Student() { id = "1001", first = "qwer" });
-            var student = studentManager.StudentGet();
-
+            //studentManager.Add(new Student() { id = 23452, first = "Melody" });
+            //var student = studentManager.Get(23452);
+            //Console.WriteLine(student.first);
+            //var student = StudentManager.Get();
+            studentManager.Get();
             /*var isValid = student.ID == "1001" && student.FirstName == "qwer";
             if (!isValid)
             {

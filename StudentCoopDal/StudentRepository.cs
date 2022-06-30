@@ -1,8 +1,12 @@
 ﻿using StudentCoopCommon;
-
+using StudentCoopDal;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Data.SqlClient;
+using System.Configuration;
+
+using System.Data;
 namespace StudentCoopDal
 {
     public class StudentRepository
@@ -10,10 +14,7 @@ namespace StudentCoopDal
 
 
         public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public sqlDatabase()
-        {
-            //this.ReadFromConfig();
-        }
+
 
         public void OpenConnection()
         {
@@ -129,13 +130,13 @@ namespace StudentCoopDal
             return new SqlConnection(devConnectionString);
 
         }
-
-        private void Add(int id, string first, string last, string date, string add, int phone)
+        //public void Add(int id, string first, string last, string date, string add, int phone)
+        public void Add(Student student)
         {
 
             var sqlConnection = GetConnection();
 
-            string sqlInsert = string.Format("INSERT INTO Student (Student_ID, First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", id, first, last, date, add, phone);
+            string sqlInsert = string.Format("INSERT INTO Student (Student_ID, First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", student.id, student.first, student.last, student.date, student.add, student.phone);
 
             SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
             sqlConnection.Open();
@@ -146,11 +147,6 @@ namespace StudentCoopDal
         }
         private void StudentUpdate(string first, string last)
         {
-
-
-
-            int id = 21443;
-
 
 
 
@@ -172,10 +168,33 @@ namespace StudentCoopDal
             // all database related code is here
         }*/
 
-        public Student Get(string id)
+        public void Get()
         {
-            return new Student();
+            //return new Student();
+
+            string sqlSelect = ("SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student ");
+            SqlConnection sqlConnection = this.GetConnection();
+            SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
+            
+            sqlConnection.Open();
+            using (SqlDataReader dataReader = command.ExecuteReader())
+            {
+                while (dataReader.Read())
+                {
+                    Console.WriteLine("Student ID using key: {0}", dataReader["Student_ID"]);
+                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
+                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
+                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
+                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
+                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
+                    Console.WriteLine("");
+                }
+            }
+
+            sqlConnection.Close();
         }
-        
+
+        }
     }
-}
+
+

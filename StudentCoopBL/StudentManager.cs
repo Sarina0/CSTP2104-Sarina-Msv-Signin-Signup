@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace StudentCoopBL
 {
     public class StudentManager
@@ -20,9 +21,12 @@ namespace StudentCoopBL
             this.studentRepository.Add(student);
         }
 
-        public Student Get(string id)
+        public void Get()
         {
-            return this.studentRepository.Get(id);
+           studentRepository.Get();
+            
+
         }
+        
     }
 }

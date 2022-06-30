@@ -150,13 +150,6 @@ namespace CSTP2104.Assignment5
         private void StudentUpdate( string first, string last)
         {
 
-
-
-            int id = 21443;
-
-
-
-
             var sqlConnection = GetConnection();
             
             string sqlInsert = string.Format("UPDATE Student SET First = '{0}', Last = '{1}'  Where Student_ID = 21443;", first, last);
