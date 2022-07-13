@@ -4,7 +4,7 @@ namespace StudentCoopCommon
 {
     public class Student
     {
-
+       
         public int id { get; set; }
         public string first { get; set; }
         public string last { get; set; }

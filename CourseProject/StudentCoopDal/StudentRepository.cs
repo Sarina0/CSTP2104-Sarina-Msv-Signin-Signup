@@ -175,7 +175,7 @@ namespace StudentCoopDal
             string sqlSelect = ("SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student ");
             SqlConnection sqlConnection = this.GetConnection();
             SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
-
+            
             sqlConnection.Open();
             using (SqlDataReader dataReader = command.ExecuteReader())
             {
@@ -194,6 +194,7 @@ namespace StudentCoopDal
             sqlConnection.Close();
         }
 
+        }
     }
-}
+
 

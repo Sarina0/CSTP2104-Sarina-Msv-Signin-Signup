@@ -1,5 +1,6 @@
 ﻿using StudentCoopCommon;
 using StudentCoopDal;
+
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,10 +24,10 @@ namespace StudentCoopBL
 
         public void Get()
         {
-            studentRepository.Get();
-
+           studentRepository.Get();
+            
 
         }
-
+        
     }
 }
