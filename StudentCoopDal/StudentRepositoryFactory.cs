@@ -7,7 +7,7 @@ namespace StudentCoopDal
 {
     public class StudentRepositoryFactory
     {
-        /*public IStudentRepository Create(StudentRepositoryType studentRepositoryType)
+       /* public IStudentRepository Create(StudentRepositoryType studentRepositoryType)
         {
             if (studentRepositoryType == StudentRepositoryType.InMemoryStudentRepository)
             {
@@ -20,7 +20,6 @@ namespace StudentCoopDal
             }
 
             throw new ArgumentException("StudentRepositoryType is unknown");
-        }
-    }*/
+        }*/
     }
-}
+    }

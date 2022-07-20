@@ -18,7 +18,7 @@ namespace StudentCoopDal
             throw new NotImplementedException();
         }
 
-        public Student Get(string id)
+        public Student Get(int id)
         {
             throw new NotImplementedException();
         }

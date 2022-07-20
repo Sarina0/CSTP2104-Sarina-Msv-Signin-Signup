@@ -7,24 +7,15 @@ namespace StudentCoopApp
 {
     class Program
     {
+        private StudentRepositoryFactory studentRepositoryFactory = new StudentRepositoryFactory();
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello student coop app");
-            //var program = new Program();
-            //program.Add_WhenStudentIsAdded_ItShouldBeAbleToGet();
+            var studentManagerTest = new StudentManagerTest();
+            studentManagerTest.Get_WhenStudentIsAdded_ShouldBeAbleToGet();
+            studentManagerTest.Get_WhenStudentDoesNotExist_ShouldReturnNull();
+
         }
 
-        public void Add_WhenStudentIsAdded_ItShouldBeAbleToGet()
-        {
-            var studentManager = new StudentManager();
-            //studentManager.Add(new Student() { ID = 1001, FirstName = "qwer" });
-            //var student = studentManager.Get();
-
-            /*var isValid = student.ID == "1001" && student.FirstName == "qwer";
-            if (!isValid)
-            {
-                throw new Exception("Add test failed");
-            }*/
-        }
     }
 }

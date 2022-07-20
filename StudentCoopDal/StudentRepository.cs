@@ -9,13 +9,21 @@ using System.Configuration;
 using System.Data;
 namespace StudentCoopDal
 {
-    public class StudentRepository
+    public class StudentRepository 
     {
 
 
         public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        private List<Student> students = new List<Student>();
 
+        public StudentRepository(List<Student> students)
+        {
+            if (students != null)
+            {
+                this.students = students;
+            }
+        }
         public void OpenConnection()
         {
             SqlConnection sqlConnection = this.GetConnection();
@@ -163,10 +171,7 @@ namespace StudentCoopDal
             Console.WriteLine("rowsAffected = {0}", rowsAffected);
 
         }
-        /*public void Add(Student student)
-        {
-            // all database related code is here
-        }*/
+      
 
         public void Get()
         {
@@ -196,4 +201,5 @@ namespace StudentCoopDal
 
     }
 }
+
 

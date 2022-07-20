@@ -1,4 +1,5 @@
 ﻿using StudentCoopCommon;
+using StudentCoopCommon.Interfaces;
 using StudentCoopDal;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,14 @@ namespace StudentCoopBL
 {
     public class StudentManager
     {
-        private readonly StudentRepository studentRepository;
 
-        public StudentManager()
+        private readonly IStudentRepository studentRepository;
+        private readonly ILogger logger;
+
+        public StudentManager(IStudentRepository studentRepository, ILogger logger)
         {
-            this.studentRepository = new StudentRepository();
+            this.studentRepository = studentRepository;
+            this.logger = logger;
         }
 
         public void Add(Student student)
@@ -21,12 +25,17 @@ namespace StudentCoopBL
             this.studentRepository.Add(student);
         }
 
-        public void Get()
+        public Student Get(int id)
         {
-            studentRepository.Get();
+            this.logger.Log($"studentManager get id:{id}");
+            var student = this.studentRepository.Get(id);
 
+            if (student != null)
+            {
+                this.logger.Log($"studentManager get id:{student.id} name:{student.first}");
+            }
 
+            return student;
         }
-
     }
 }
