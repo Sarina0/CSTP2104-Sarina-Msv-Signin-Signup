@@ -12,5 +12,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\StudentCoopBL\StudentCoopBL.csproj" />
 	</ItemGroup>
+	
 
 </Project>

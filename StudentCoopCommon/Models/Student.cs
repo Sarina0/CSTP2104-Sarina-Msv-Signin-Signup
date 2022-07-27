@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StudentCoopCommon
+namespace StudentCoopCommon.ViewModels
 {
     public class Student
     {
@@ -11,5 +11,12 @@ namespace StudentCoopCommon
         public string date { get; set; }
         public string add { get; set; }
         public int phone { get; set; }
+
+        public Student()
+        {
+
+        }
     }
+    
+
 }

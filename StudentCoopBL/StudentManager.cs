@@ -1,6 +1,7 @@
 ﻿using StudentCoopCommon;
 using StudentCoopCommon.Interfaces;
 using StudentCoopDal;
+using StudentCoopCommon.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,6 +37,10 @@ namespace StudentCoopBL
             }
 
             return student;
+        }
+        public void StudentGet()
+        {
+            this.studentRepository.StudentGet();
         }
     }
 }

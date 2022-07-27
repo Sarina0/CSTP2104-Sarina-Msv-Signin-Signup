@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using StudentCoopCommon.ViewModels;
 
 namespace StudentCoopCommon.Interfaces
 {
@@ -10,5 +11,6 @@ namespace StudentCoopCommon.Interfaces
         Student Get(int id);
         void Delete(string id);
         void Update(Student student);
+        void StudentGet();
     }
 }

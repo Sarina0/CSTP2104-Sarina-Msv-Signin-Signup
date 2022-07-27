@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
-
 using System.Data;
+using StudentCoopCommon.Interfaces;
+using StudentCoopCommon.ViewModels;
+
+
 namespace StudentCoopDal
 {
     public class StudentRepository 
@@ -176,7 +179,7 @@ namespace StudentCoopDal
         public void Get()
         {
             //return new Student();
-
+          
             string sqlSelect = ("SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student ");
             SqlConnection sqlConnection = this.GetConnection();
             SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
@@ -197,6 +200,25 @@ namespace StudentCoopDal
             }
 
             sqlConnection.Close();
+        }
+        private void StudentAdd(int id, string first, string last, string date, string add, int phone)
+        {
+
+            var sqlConnection = GetConnection();
+
+            string sqlInsert = string.Format("INSERT INTO Student (Student_ID, First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", id, first, last, date, add, phone);
+
+            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
+            sqlConnection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            Console.WriteLine("rowsAffected = {0}", rowsAffected);
+        }
+        public Student Get(int id)
+        {
+            var student = this.students.Find(s => s.id == id);
+            return student;
         }
 
     }

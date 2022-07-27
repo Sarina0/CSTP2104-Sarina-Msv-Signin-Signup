@@ -64,6 +64,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
     <PackageReference Include="Microsoft.ProjectReunion" Version="[0.8.11]">
       <IncludeAssets>build</IncludeAssets>
     </PackageReference>
