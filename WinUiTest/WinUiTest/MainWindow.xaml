@@ -7,18 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+               
     <Grid x:Name="LayoutRoot" Background="Aqua" Width="540" Height="440">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="2*" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"  
-               Margin="10" FontWeight="Bold" 
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"  
+               Margin="20" FontWeight="Bold" 
                Text="Student signUp" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <Grid x:Name="FormLayoutGrid" Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -31,23 +34,33 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Student Id" Margin="10" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" />
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" />
             <TextBlock Grid.Row="1" Grid.Column="0" Text="First Name" Margin="10" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" />
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Last Name" Margin="10" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" />
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" />
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Address" Margin="10" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="10" />
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" />
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Phone Number" Margin="10" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="4" Grid.Column="1" Margin="10" />
-
+            <TextBox Grid.Row="4" Grid.Column="1" Margin="5" />
+            <Button x:Name="Signup" Height="40" Width="120"  Margin="5" Grid.Row="5" Grid.Column="0"
+   Canvas.Left="25" Canvas.Top="40"   
+   Content="Sign up"  
+   VerticalAlignment="Center"
+    Click="Button_Click"               
+   HorizontalAlignment="Right">
+               
+              
+            </Button>
+            <TextBlock x:Name="greetingOutput"/>
 
         </Grid>
     </Grid>

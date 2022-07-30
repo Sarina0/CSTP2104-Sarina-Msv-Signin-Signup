@@ -7,25 +7,22 @@ using StudentCoopCommon.ViewModels;
 using StudentCoopDal;
 using System;
 
-
-
 namespace StudentCoopApp
 {
     class StudentManagerTest
     {
         private ILogger logger;
         private StudentManager studentManager;
-        //private readonly StudentRepositoryFactory studentRepositoryFactory = new StudentRepositoryFactory();
-        private const int defaultStudentId = 1234;
+        private readonly StudentRepositoryFactory studentRepositoryFactory = new StudentRepositoryFactory();
+        private const int defaultStudentId = 123;
         private const string defaultStudentFName = "testFName";
-     
 
         public void Get_WhenStudentIsAdded_ShouldBeAbleToGet()
         {
             // Preparation
-            //this.InitializeTest();
+            this.InitializeTest();
             var expectedStudent = this.GetStudentObject();
-            this.studentManager.Add(expectedStudent);
+            //this.studentManager.Add(expectedStudent);
 
             // Test
             var student = this.studentManager.Get(defaultStudentId);
@@ -41,7 +38,7 @@ namespace StudentCoopApp
         public void Get_WhenStudentDoesNotExist_ShouldReturnNull()
         {
             // Preparation for the test
-            //this.InitializeTest();
+            this.InitializeTest();
 
             // Test
             var student = studentManager.Get(9877);
@@ -54,39 +51,47 @@ namespace StudentCoopApp
             }
         }
 
-       /* private void InitializeTest()
-        {    
+        private void InitializeTest()
+        {
             this.logger = new FileLogger();
-            
             this.studentManager = new StudentManager(
                 studentRepositoryFactory.Create(StudentRepositoryType.InMemoryStudentRepository),
                 logger);
-        }*/
-
-        private Student GetStudentObject(int Id = defaultStudentId, string FirstName= defaultStudentFName)
-        {
-            return new Student() { id = Id, first = defaultStudentFName };
         }
 
-      
-        public void Add_WhenStudentIsAdded_ItShouldBeAbleToGet()
+        private Student GetStudentObject(int id = defaultStudentId, string firstName = defaultStudentFName)
         {
-            //var studentManager = new StudentManager();
-            studentManager.Add(new Student() { id = 1001, first = "qwer" });
-            var student = studentManager.Get(1001);
-
-            var isValid = student.id == 1001 && student.first == "qwer";
-            if (!isValid)
-            {
-                throw new Exception("Add test failed");
-            }
+            return new Student() { id = id, first = defaultStudentFName };
         }
-        public void Get_AllData_StudentInDatabase()
+       
+        public void GetStudents()
         {
+            InitializeTest();
+            studentManager.GetAllStudent();
+        }
+        
+        public void Add_This_Student()
+        {
+            this.InitializeTest();
+            studentManager.Add();
+        }
+        public void Get_This_StudentBy_id()
+        {
+            this.InitializeTest();
+            studentManager.GetById();
 
+        }
+        
+        public void DeleteStudentTest()
+        {
+            this.InitializeTest();
+            studentManager.DeleteStudent();
+        }
+        public void Update_Student()
+        {
+            this.InitializeTest();
+            studentManager.UpdateStudent();
 
-            studentManager.StudentGet();
         }
     }
 }
-

@@ -5,24 +5,21 @@ using System.Text;
 
 namespace StudentCoopDal
 {
-    namespace StudentCoopDal
+    public class StudentRepositoryFactory
     {
-        public class StudentRepositoryFactory
+        public IStudentRepository Create(StudentRepositoryType studentRepositoryType)
         {
-            public IStudentRepository Create(StudentRepositoryType studentRepositoryType)
+            if (studentRepositoryType == StudentRepositoryType.InMemoryStudentRepository)
             {
-                if (studentRepositoryType == StudentRepositoryType.InMemoryStudentRepository)
-                {
-                    return null;
+                return new StudentRepository(null);
 
-                }
-                else if (studentRepositoryType == StudentRepositoryType.SqlStudentRepository)
-                {
-                    return new StudentSqlRepository();
-                }
-
-                throw new ArgumentException("StudentRepositoryType is unknown");
             }
+            else if (studentRepositoryType == StudentRepositoryType.SqlStudentRepository)
+            {
+                return new StudentSqlRepository();
+            }
+
+            throw new ArgumentException("StudentRepositoryType is unknown");
         }
     }
 }

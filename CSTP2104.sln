@@ -21,7 +21,7 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "WinUiTest (Package)", "WinU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUiTest", "WinUiTest\WinUiTest\WinUiTest.csproj", "{19170042-78CC-4BE3-9244-34011F3D4FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentCoopViewModel", "StudentCoopViewModel\StudentCoopViewModel.csproj", "{D7CC3D4D-26DF-4C26-975F-A9D163634B31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentCoopViewModel", "StudentCoopViewModel\StudentCoopViewModel.csproj", "{D7CC3D4D-26DF-4C26-975F-A9D163634B31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

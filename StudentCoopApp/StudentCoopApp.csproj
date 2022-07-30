@@ -6,12 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\StudentCoopBL\StudentCoopBL.csproj" />
 	</ItemGroup>
-	
 
 </Project>

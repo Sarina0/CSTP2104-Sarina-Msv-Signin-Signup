@@ -3,7 +3,7 @@ using StudentCoopCommon.Interfaces;
 using StudentCoopCommon.ViewModels;
 
 using System;
-using StudentCoopCommon;
+
 using StudentCoopDal;
 using System;
 using System.Collections.Generic;
@@ -17,70 +17,65 @@ namespace StudentCoopDal
 {
     public class StudentSqlRepository : IStudentRepository
     {
-        public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private List<Student> students = new List<Student>();
+
+        public StudentSqlRepository()
+        {
+
+        }
+
+        public StudentSqlRepository(List<Student> students)
+        {
+            if (students != null)
+            {
+                this.students = students;
+            }
+        }
+
         public void Add(Student student)
         {
-            throw new NotImplementedException();
-        }
+            
+            this.students.Add(student);
 
-        public void Delete(string id)
-        {
-            throw new NotImplementedException();
         }
-
-       
 
         public Student Get(int id)
         {
-            throw new NotImplementedException();
+            var student = this.students.Find(s => s.id == id);
+            return student;
         }
 
-        public void Update(Student student)
+        public void Delete(int id)
+        {
+            Console.WriteLine("this is delete from sql repo");
+        }
+
+        public void Update(int id, Student student)
+        {
+            Console.WriteLine("this is update from sql repo");
+        }
+
+        public IEnumerable<Student> Get(IEnumerable<string> filters)
         {
             throw new NotImplementedException();
         }
 
-        public void OpenConnection()
+        public void Print()
         {
-            SqlConnection sqlConnection = this.GetConnection();
-            sqlConnection.Open();
-
-            Console.WriteLine("Connection state = {0}", sqlConnection.State);
-            sqlConnection.Close();
+            throw new NotImplementedException();
         }
-        private SqlConnection GetConnection()
+        public void ThisTest()
         {
-            return new SqlConnection(devConnectionString);
-
+            Console.WriteLine("This is test from student sql Repo");
         }
-
         public void StudentGet()
         {
-            var expConnString = new StudentSqlRepository();
-
-
-            GetConnection();
-            expConnString.OpenConnection();
-            string sqlSelect = "SELECT Sudent_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student";
-            SqlConnection sqlConnection = this.GetConnection();
-            SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
-
-            sqlConnection.Open();
-            using (SqlDataReader dataReader = command.ExecuteReader())
-            {
-                while (dataReader.Read())
-                {
-                    Console.WriteLine("Student ID using key: {0}", dataReader["Student_ID"]);
-                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
-                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
-                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
-                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
-                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
-                    Console.WriteLine("");
-                }
-            }
-
-            sqlConnection.Close();
+            Console.WriteLine("this is studentGet from student sql");
+        }
+       
+        public void PrintList()
+        {
+            Console.WriteLine("sql repo print list");
         }
     }
 }

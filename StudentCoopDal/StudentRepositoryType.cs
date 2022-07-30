@@ -13,5 +13,6 @@ namespace StudentCoopDal
         ExcelStudentRepository,
         WebServiceStudentRepository,
         AzureCloudStudentRepository
+        
     }
 }

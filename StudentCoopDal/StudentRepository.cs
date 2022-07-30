@@ -1,32 +1,34 @@
-﻿using StudentCoopCommon;
-using StudentCoopDal;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Data.SqlClient;
-using System.Configuration;
-using System.Data;
+﻿using Microsoft.Data.SqlClient;
+using StudentCoopCommon;
 using StudentCoopCommon.Interfaces;
 using StudentCoopCommon.ViewModels;
 
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace StudentCoopDal
 {
-    public class StudentRepository 
+    public class StudentRepository : IStudentRepositoryReportable, IPrintable
     {
-
-
-        public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
         private List<Student> students = new List<Student>();
+        private List<Student> singleStudent2 = new List<Student>();
 
-        public StudentRepository(List<Student> students)
+       
+        public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public StudentRepository()
         {
-            if (students != null)
+
+        }
+        public void PrintList()
+        {
+            for (int i = 0; i < students.Count; i++)
             {
-                this.students = students;
+                Console.WriteLine(students[i]);
             }
         }
+        
         public void OpenConnection()
         {
             SqlConnection sqlConnection = this.GetConnection();
@@ -35,6 +37,12 @@ namespace StudentCoopDal
             Console.WriteLine("Connection state = {0}", sqlConnection.State);
             sqlConnection.Close();
         }
+        private SqlConnection GetConnection()
+        {
+            return new SqlConnection(devConnectionString);
+
+        }
+        
 
         public void SelectStudentData()
         {
@@ -50,43 +58,7 @@ namespace StudentCoopDal
             Console.WriteLine("Count is = {0}", count);
         }
 
-        public void DeleteStudent()
-        {
-            string studentID = "19234";
-            var sqlConnection = GetConnection();
-
-            string sqlDelete = string.Format("DELETE FROM dbo.Student WHERE Student_ID='{0}'", studentID);
-            SqlCommand command = this.GetSqlCommand(sqlDelete, sqlConnection);
-            sqlConnection.Open();
-            int rowsAffected = command.ExecuteNonQuery();
-            sqlConnection.Close();
-
-            Console.WriteLine("rowsAffected = {0}", rowsAffected);
-        }
-
-        public void StudentGet()
-        {// string birth, string address, int num
-            string sqlSelect = "SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student";
-            SqlConnection sqlConnection = this.GetConnection();
-            SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
-
-            sqlConnection.Open();
-            using (SqlDataReader dataReader = command.ExecuteReader())
-            {
-                while (dataReader.Read())
-                {
-                    Console.WriteLine("Student ID using key: {0}", dataReader["Student_ID"]);
-                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
-                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
-                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
-                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
-                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
-                    Console.WriteLine("");
-                }
-            }
-
-            sqlConnection.Close();
-        }
+       
 
         public void GetSchemaAndResult()
         {
@@ -136,50 +108,13 @@ namespace StudentCoopDal
             return new SqlCommand(sqlStatement, connection);
         }
 
-        private SqlConnection GetConnection()
-        {
-            return new SqlConnection(devConnectionString);
 
-        }
-        //public void Add(int id, string first, string last, string date, string add, int phone)
-        public void Add(Student student)
-        {
-
-            var sqlConnection = GetConnection();
-
-            string sqlInsert = string.Format("INSERT INTO Student (Student_ID, First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", student.id, student.first, student.last, student.date, student.add, student.phone);
-
-            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
-            sqlConnection.Open();
-            int rowsAffected = command.ExecuteNonQuery();
-            sqlConnection.Close();
-
-            Console.WriteLine("rowsAffected = {0}", rowsAffected);
-        }
-        private void StudentUpdate(string first, string last)
-        {
-
-
-
-            var sqlConnection = GetConnection();
-
-            string sqlInsert = string.Format("UPDATE Student SET First = '{0}', Last = '{1}'  Where Student_ID = 21443;", first, last);
-
-
-            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
-            sqlConnection.Open();
-            int rowsAffected = command.ExecuteNonQuery();
-            sqlConnection.Close();
-
-            Console.WriteLine("rowsAffected = {0}", rowsAffected);
-
-        }
-      
+        
 
         public void Get()
         {
             //return new Student();
-          
+
             string sqlSelect = ("SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student ");
             SqlConnection sqlConnection = this.GetConnection();
             SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
@@ -201,7 +136,7 @@ namespace StudentCoopDal
 
             sqlConnection.Close();
         }
-        private void StudentAdd(int id, string first, string last, string date, string add, int phone)
+        public void StudentAdd(int id, string first, string last, string date, string add, int phone)
         {
 
             var sqlConnection = GetConnection();
@@ -215,13 +150,149 @@ namespace StudentCoopDal
 
             Console.WriteLine("rowsAffected = {0}", rowsAffected);
         }
+       
+
+        public void StudentGet()
+        {
+            var expConnString = new StudentRepository();
+
+
+            GetConnection();
+            expConnString.OpenConnection();
+            string sqlSelect = "SELECT  First, Last, DateOfBirth, Address, PhoneNumber From dbo.student";
+            SqlConnection sqlConnection = this.GetConnection();
+            SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
+
+            sqlConnection.Open();
+            using (SqlDataReader dataReader = command.ExecuteReader())
+            {
+                while (dataReader.Read())
+                {
+                    //Console.WriteLine("Student ID using key: {0}", dataReader["Student_ID"]);
+                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
+                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
+                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
+                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
+                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
+                    Console.WriteLine("");
+                }
+            }
+
+            sqlConnection.Close();
+        }
+
+        
+        public void Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+        public StudentRepository(List<Student> students)
+        {
+            if (students != null)
+            {
+                this.students = students;
+            }
+        }
+
+
+
+        public IEnumerable<Student> Get(IEnumerable<string> filters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Print()
+        {
+            throw new NotImplementedException();
+        }
+       
+       
+        public void Add(Student student)
+        {
+
+            var sqlConnection = GetConnection();
+
+            string sqlInsert = string.Format("INSERT INTO Student (Student_ID, First, Last, DateOfBirth, Address, PhoneNumber) VALUES('{0}','{1}','{2}','{3}','{4}','{5}')", student.id, student.first, student.last, student.date, student.add, student.phone);
+
+            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
+            sqlConnection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            Console.WriteLine("rowsAffected = {0}", rowsAffected);
+            students.Add(student);
+        }
+        public void Update(int id, Student student)
+        {
+
+            var sqlConnection = GetConnection();
+                
+            string sqlInsert = string.Format("UPDATE Student SET First = '{0}', Last = '{1}'  Where Student_ID = {2};", student.first, student.last, id);
+
+
+            SqlCommand command = this.GetSqlCommand(sqlInsert, sqlConnection);
+            sqlConnection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            Console.WriteLine("rowsAffected = {0}", rowsAffected);
+
+        }
+        public void Delete(int id)
+        {
+            var sqlConnection = GetConnection();
+
+            string sqlDelete = string.Format("DELETE FROM dbo.Student WHERE Student_ID='{0}'", id);
+            SqlCommand command = this.GetSqlCommand(sqlDelete, sqlConnection);
+            sqlConnection.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            Console.WriteLine("rowsAffected = {0}", rowsAffected);
+        }
         public Student Get(int id)
         {
+            var expConnString = new StudentRepository();
+
             var student = this.students.Find(s => s.id == id);
+
+
+
+            GetConnection();
+            expConnString.OpenConnection();
+            string sqlSelect = string.Format("SELECT  First, Last, DateOfBirth, Address, PhoneNumber From dbo.student WHERE Student_ID = {0} ", id);
+
+            SqlConnection sqlConnection = this.GetConnection();
+            SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
+
+            sqlConnection.Open();
+            using (SqlDataReader dataReader = command.ExecuteReader())
+            {
+                while (dataReader.Read())
+                {
+                    //Console.WriteLine("Student ID using key: {0}", dataReader[id]);
+                    Console.WriteLine("Student ID using key: {0}", id);
+                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
+                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
+                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
+                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
+                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
+                    Console.WriteLine("");
+
+                    singleStudent2.Add(student);
+
+                }
+            }
+
+            sqlConnection.Close();
+
             return student;
+
         }
+
 
     }
 }
-
-

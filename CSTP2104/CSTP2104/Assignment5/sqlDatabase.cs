@@ -12,6 +12,7 @@ namespace CSTP2104.Assignment5
     public class sqlDatabase : AssignmentBase
     {
 
+      
         public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public sqlDatabase()
         {

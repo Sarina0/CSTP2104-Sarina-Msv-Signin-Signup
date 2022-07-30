@@ -14,7 +14,8 @@ namespace StudentCoopCommon.ViewModels
 
         public Student()
         {
-
+            
+            
         }
     }
     

@@ -33,6 +33,7 @@ namespace WinUiTest
         public App()
         {
             this.InitializeComponent();
+            
         }
 
         /// <summary>
