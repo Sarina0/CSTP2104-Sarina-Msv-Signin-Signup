@@ -1,5 +1,7 @@
 ﻿<Window
+    
     x:Class="WinUiTest.MainWindow"
+   
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUiTest"
@@ -7,62 +9,62 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-               
-    <Grid x:Name="LayoutRoot" Background="Aqua" Width="540" Height="440">
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="150" />
-        </Grid.ColumnDefinitions>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"  
-               Margin="20" FontWeight="Bold" 
-               Text="Student signUp" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Grid x:Name="FormLayoutGrid" Grid.Row="1" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Student Id" Margin="10" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" />
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="First Name" Margin="10" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" />
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Last Name" Margin="10" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" />
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Address" Margin="10" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" />
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Phone Number" Margin="10" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <TextBox Grid.Row="4" Grid.Column="1" Margin="5" />
-            <Button x:Name="Signup" Height="40" Width="120"  Margin="5" Grid.Row="5" Grid.Column="0"
-   Canvas.Left="25" Canvas.Top="40"   
-   Content="Sign up"  
-   VerticalAlignment="Center"
-    Click="Button_Click"               
-   HorizontalAlignment="Right">
-               
-              
-            </Button>
-            <TextBlock x:Name="greetingOutput"/>
 
-        </Grid>
+    <Grid x:Name="LayoutRoot" Background="LightGoldenrodYellow" Width="640" Height="740" >
+
+        <TextBlock  Height="650"
+           Width="355"  FontFamily="Arial"  FontWeight="bold" >
+
+            <TextBlock.RenderTransform>
+                <ScaleTransform ScaleX="2.2" ScaleY="2.2" />
+
+            </TextBlock.RenderTransform>
+    Student Coop Application
+        </TextBlock >
+        <TextBlock  Height="550" 
+           Width="100"  FontFamily="Arial"  FontWeight="bold" Foreground="black" >
+
+            <TextBlock.RenderTransform>
+                <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+
+            </TextBlock.RenderTransform>
+    Update Page
+        </TextBlock>
+
+        <StackPanel>
+
+           
+            <TextBlock Height="250" />
+              
+            <TextBox  x:Name="nameInput"
+                     Header="Student ID:" 
+                     Width="200" HorizontalAlignment="Center" Text="{x:Bind mainViewModel.StudentViewModel.ID, Mode =Twoway}"   />
+            <TextBox   x:Name="namePass" Text="{x:Bind mainViewModel.StudentViewModel.FirstName, Mode =Twoway}" 
+                     Header="First Name:" 
+                      
+                     Width="200" HorizontalAlignment="Center" />
+           
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
+
+
+            </StackPanel>
+            <TextBlock  x:Name="greetingOutput"/>
+            <Button x:Name="Login" Height="40" Width="100" Margin="5,-30,0,20"  Background="LightCoral"
+   
+   Content="Update"  
+    Click="{x:Bind mainViewModel.Login}"       
+             
+   HorizontalAlignment="Center" >
+                
+
+            </Button>
+
+            <HyperlinkButton 
+     NavigateUri="Window2.xaml">
+                Navigate to Another Page
+            </HyperlinkButton>
+          
+        </StackPanel>
     </Grid>
 
 </Window>

@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using StudentCoopApp;
+
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
@@ -15,13 +15,24 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using StudentCoopBL;
+
 using StudentCoopCommon;
 using StudentCoopCommon.Interfaces;
 using StudentCoopCommon.Logging;
 using StudentCoopCommon.ViewModels;
-
+using System.Windows;
 using StudentCoopDal;
+
+
+using StudentCoopViewModel;
+
+
+
+using Windows.UI.Core;
+
+using msWindowActivated = Microsoft.UI.Xaml;
+using System.ComponentModel.DataAnnotations;
+
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -34,62 +45,46 @@ namespace WinUiTest
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public partial class MainWindow : Window
     {
-      
+        public MainViewModel mainViewModel { get; }
 
+        [Required(ErrorMessage = "first name is required")]
+        public int First { get; set; }
+        [Required(ErrorMessage = "Last name is required")]
+        public int Last { get; set; }
 
         public MainWindow()
         {
             this.InitializeComponent();
-           
 
+            IStudentRepository studentRepository = new StudentRepositoryFactory().Create(StudentRepositoryType.InMemoryStudentRepository);
+
+            this.mainViewModel = new MainViewModel(studentRepository);
+
+            this.Activated += this.MainWindow_Activated;
         }
-        
-       
-        
-        public class StudentManagerTest {
-            private ILogger logger;
-            public delegate void printString(string s);
-            private StudentManager studentManager;
-            private readonly StudentRepositoryFactory studentRepositoryFactory = new StudentRepositoryFactory();
+        private void MainWindow_Activated(object sender, msWindowActivated.WindowActivatedEventArgs args)
+        {
 
-            private void InitializeTest()
-            {
-                this.logger = new FileLogger();
-                this.studentManager = new StudentManager(
-                    studentRepositoryFactory.Create(StudentRepositoryType.InMemoryStudentRepository),
-                    logger);
-            }
-            public void GetStudents()
-            {
-                InitializeTest();
-                studentManager.GetAllStudent();
-            }
-            public string ThisIsTest()
-            {
-                var  test= "hi test";
-                return test;
-            }
-            public void Get_This_StudentBy_id()
-            {
-                InitializeTest();
-                studentManager.GetById();
-                
 
-            }
+                this.mainViewModel.Save();
+            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           //var studentManagerTest = new StudentManagerTest();
-        
-            //studentManagerTest.Get_This_StudentBy_id();
-            greetingOutput.Text = "Helotest";
             
+            //greetingOutput.Text = "unsuccessful";
+         
 
         }
+       
+
+
+
+    }
        
 
     }
 
-}
+
