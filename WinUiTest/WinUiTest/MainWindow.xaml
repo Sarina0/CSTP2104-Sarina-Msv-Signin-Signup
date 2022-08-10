@@ -39,11 +39,11 @@
             <TextBox  x:Name="nameInput"
                      Header="Student ID:" 
                      Width="200" HorizontalAlignment="Center" Text="{x:Bind mainViewModel.StudentViewModel.ID, Mode =Twoway}"   />
-            <TextBox   x:Name="namePass" 
+            <PasswordBox   x:Name="namePass" PasswordChar="*" 
                      Header="Password" 
                       
                      Width="200" HorizontalAlignment="Center" />
-
+           
             <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
 
 
@@ -59,7 +59,7 @@
 
 
             </Button>
-
+            
             <HyperlinkButton 
        x:Name="navigateButton" Click="navigateButton_Click" Height="100" Width="640" Margin="5,-30,0,20" >
                 Don't you have an account?
