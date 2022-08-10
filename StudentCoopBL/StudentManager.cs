@@ -53,6 +53,13 @@ namespace StudentCoopBL
             this.studentRepository.Add(student1);
 
         }
+        public int GetID()
+        {
+            var student2 = new Student();
+            var id2 = student2.id = 21443;
+            int some = this.studentRepository.IDGet(id2);
+            return some;
+        }
         public void GetById()
         { 
             var student2 = new Student();

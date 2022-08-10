@@ -81,5 +81,10 @@ namespace StudentCoopDal
         {
             Console.WriteLine("sql repo print list");
         }
+
+        public int IDGet(int id2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

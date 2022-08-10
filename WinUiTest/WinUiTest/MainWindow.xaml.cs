@@ -5,7 +5,7 @@ using StudentCoopCommon.Interfaces;
 using StudentCoopDal;
 using StudentCoopViewModel;
 using msWindowActivated = Microsoft.UI.Xaml;
-
+using System;
 
 namespace WinUiTest
 {
@@ -40,10 +40,36 @@ namespace WinUiTest
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            //greetingOutput.Text = "unsuccessful";
-         
 
+
+            int some2 = this.mainViewModel.Get_ID();
+
+            try
+            {
+
+
+                if (some2 == 1)
+                {
+                    greetingOutput.Text = "Successful";
+                }
+                else
+                {
+                    greetingOutput.Text = "Unsuccessful";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Catch Block = " + ex);
+            }
+            finally
+            {
+
+
+            }
+
+            //  Click="Button_Click"  
+            //   Click="{x:Bind mainViewModel.Save}"  
 
         }
 

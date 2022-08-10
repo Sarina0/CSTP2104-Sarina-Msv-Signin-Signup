@@ -81,7 +81,13 @@ namespace StudentCoopApp
             studentManager.GetById();
 
         }
-        
+        public int print_ID()
+        {
+            this.InitializeTest();
+            int some = studentManager.GetID();
+            return some;
+        }
+
         public void DeleteStudentTest()
         {
             this.InitializeTest();

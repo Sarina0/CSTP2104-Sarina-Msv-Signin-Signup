@@ -76,6 +76,12 @@ namespace StudentCoopViewModel
 
             this.RaisePropertyChanged(nameof(this.StudentViewModel));
         }
+        public int Get_ID()
+        {
+            int some = studentViewModel.IDGet();
+
+            return some;
+        }
 
         public void Login()
         {

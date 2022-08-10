@@ -15,6 +15,7 @@ namespace StudentCoopCommon.Interfaces
         List<Student> Get();
         void Update(int id, Student student);
         void StudentGet();
+        int IDGet(int id2);
 
 
     }

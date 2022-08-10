@@ -103,6 +103,13 @@
         {
             this.studentRepository.Update(this.student.id, this.student);
         }
+        public int IDGet()
+        {
+            // int id = this.studentRepository.Get(this.student.id);
+            int some = this.studentRepository.IDGet(this.student.id);
+            return some;
+
+        }
         public void Login()
         {
             this.studentRepository.Get(this.student.id);

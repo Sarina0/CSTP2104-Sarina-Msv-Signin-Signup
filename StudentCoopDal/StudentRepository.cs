@@ -113,13 +113,20 @@ namespace StudentCoopDal
         }
 
 
-
-
-        /*public void Get()
+        public int IDGet(int id)
         {
-            //return new Student();
 
-            string sqlSelect = ("SELECT Student_ID, First, Last, DateOfBirth, Address, PhoneNumber From dbo.student ");
+            var expConnString = new StudentRepository();
+
+            var student = this.students.Find(s => s.id == id);
+
+
+            GetConnection();
+            expConnString.OpenConnection();
+            string sqlSelect = string.Format("SELECT Student_ID From dbo.Student WHERE Student_ID = {0} ", id);
+
+            int i = 0;
+
             SqlConnection sqlConnection = this.GetConnection();
             SqlCommand command = new SqlCommand(sqlSelect, sqlConnection);
 
@@ -128,18 +135,18 @@ namespace StudentCoopDal
             {
                 while (dataReader.Read())
                 {
-                    Console.WriteLine("Student ID using key: {0}", dataReader["Student_ID"]);
-                    Console.WriteLine("Student First Name using GetString: {0}", dataReader["First"]);
-                    Console.WriteLine("Student Last Name using GetString: {0}", dataReader["Last"]);
-                    Console.WriteLine("Student Date of birth using GetString: {0}", dataReader["DateOfBirth"]);
-                    Console.WriteLine("Student Address using GetString: {0}", dataReader["Address"]);
-                    Console.WriteLine("Student Phone number GetInt32: {0}", dataReader["PhoneNumber"]);
-                    Console.WriteLine("");
-                }
-            }
+                   
+                    i++;
 
+                }
+
+            }
             sqlConnection.Close();
-        }*/
+
+            return i;
+        }
+
+
         public void StudentAdd(int id, string first, string last, string date, string add, int phone)
         {
 

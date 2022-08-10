@@ -21,9 +21,35 @@ namespace StudentCoopApp
 
 
             //studentManagerTest.DeleteStudentTest();
-            studentManagerTest.GetStudents();
+            //studentManagerTest.GetStudents();
             //studentManagerTest.Get_This_StudentBy_id();
             //studentManagerTest.Update_Student();
+
+            int some2 = studentManagerTest.print_ID();
+
+           try
+           {
+
+
+               if (some2 == 1)
+               {
+                   Console.WriteLine("yess");
+               }
+               else
+               {
+                   Console.WriteLine("Failed");
+               }
+
+           }
+           catch (Exception ex)
+           {
+               Console.WriteLine("Catch Block = " + ex);
+           }
+           finally
+           {
+
+
+           }
 
 
 
