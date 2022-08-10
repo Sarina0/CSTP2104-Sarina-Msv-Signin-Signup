@@ -21,8 +21,8 @@ namespace StudentCoopApp
 
 
             //studentManagerTest.DeleteStudentTest();
-            //studentManagerTest.GetStudents();
-            studentManagerTest.Get_This_StudentBy_id();
+            studentManagerTest.GetStudents();
+            //studentManagerTest.Get_This_StudentBy_id();
             //studentManagerTest.Update_Student();
 
 

@@ -67,18 +67,49 @@
             }
         }
 
+        public string Address
+        {
+            get
+            {
+                return this.student.add;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    this.student.add = value;
+                    this.RaisePropertyChanged(nameof(Address));
+                }
+            }
+        }
+        public int PhoneNum
+        {
+            get
+            {
+                return this.student.phone;
+            }
+
+            set
+            {
+                if (value != 0)
+                {
+                    this.student.phone= value;
+                    this.RaisePropertyChanged(nameof(PhoneNum));
+                }
+            }
+        }
         public void Save()
         {
             this.studentRepository.Update(this.student.id, this.student);
-            var isValid = this.student == null;
-            if (!isValid)
-            {
-                
-            }
         }
         public void Login()
         {
             this.studentRepository.Get(this.student.id);
+        }
+        public void Add()
+        {
+            this.studentRepository.Add(this.student);
         }
     }
 }

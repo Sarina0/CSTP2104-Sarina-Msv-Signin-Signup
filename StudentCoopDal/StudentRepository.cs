@@ -15,7 +15,7 @@ namespace StudentCoopDal
         private List<Student> students = new List<Student>();
         private List<Student> singleStudent2 = new List<Student>();
 
-       
+
         public string devConnectionString = @"Data Source=DESKTOP-515H0J5\SQLEXPRESS;Initial Catalog=StudentCoop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public StudentRepository()
         {
@@ -28,7 +28,7 @@ namespace StudentCoopDal
                 Console.WriteLine(students[i]);
             }
         }
-        
+
         public void OpenConnection()
         {
             SqlConnection sqlConnection = this.GetConnection();
@@ -42,7 +42,7 @@ namespace StudentCoopDal
             return new SqlConnection(devConnectionString);
 
         }
-        
+
 
         public void SelectStudentData()
         {
@@ -58,7 +58,7 @@ namespace StudentCoopDal
             Console.WriteLine("Count is = {0}", count);
         }
 
-       
+
 
         public void GetSchemaAndResult()
         {
@@ -102,6 +102,10 @@ namespace StudentCoopDal
             }
         }
 
+        public List<Student> Get()
+        {
+            return this.students;
+        }
 
         private SqlCommand GetSqlCommand(string sqlStatement, SqlConnection connection)
         {
@@ -109,9 +113,9 @@ namespace StudentCoopDal
         }
 
 
-        
 
-        public void Get()
+
+        /*public void Get()
         {
             //return new Student();
 
@@ -135,7 +139,7 @@ namespace StudentCoopDal
             }
 
             sqlConnection.Close();
-        }
+        }*/
         public void StudentAdd(int id, string first, string last, string date, string add, int phone)
         {
 
@@ -150,7 +154,7 @@ namespace StudentCoopDal
 
             Console.WriteLine("rowsAffected = {0}", rowsAffected);
         }
-       
+
 
         public void StudentGet()
         {
@@ -181,13 +185,13 @@ namespace StudentCoopDal
             sqlConnection.Close();
         }
 
-        
+
         public void Delete(string id)
         {
             throw new NotImplementedException();
         }
 
-        
+
 
         public StudentRepository(List<Student> students)
         {
@@ -208,8 +212,8 @@ namespace StudentCoopDal
         {
             throw new NotImplementedException();
         }
-       
-       
+
+
         public void Add(Student student)
         {
 
@@ -229,7 +233,7 @@ namespace StudentCoopDal
         {
 
             var sqlConnection = GetConnection();
-                
+
             string sqlInsert = string.Format("UPDATE Student SET First = '{0}', Last = '{1}'  Where Student_ID = {2};", student.first, student.last, id);
 
 

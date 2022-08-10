@@ -24,6 +24,10 @@ namespace StudentCoopDal
 
         }
 
+        public List<Student> Get()
+        {
+            throw new NotImplementedException();
+        }
         public StudentSqlRepository(List<Student> students)
         {
             if (students != null)
@@ -34,7 +38,7 @@ namespace StudentCoopDal
 
         public void Add(Student student)
         {
-            
+
             this.students.Add(student);
 
         }
@@ -72,7 +76,7 @@ namespace StudentCoopDal
         {
             Console.WriteLine("this is studentGet from student sql");
         }
-       
+
         public void PrintList()
         {
             Console.WriteLine("sql repo print list");

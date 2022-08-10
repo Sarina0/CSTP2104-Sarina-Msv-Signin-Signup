@@ -33,9 +33,9 @@
 
         <StackPanel>
 
-           
+
             <TextBlock Height="250" />
-              
+
             <TextBox  x:Name="nameInput"
                      Header="Student ID:" 
                      Width="200" HorizontalAlignment="Center" Text="{x:Bind mainViewModel.StudentViewModel.ID, Mode =Twoway}"   />
@@ -43,7 +43,7 @@
                      Header="First Name:" 
                       
                      Width="200" HorizontalAlignment="Center" />
-           
+
             <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
 
 
@@ -52,18 +52,19 @@
             <Button x:Name="Login" Height="40" Width="100" Margin="5,-30,0,20"  Background="LightCoral"
    
    Content="Update"  
-    Click="{x:Bind mainViewModel.Login}"       
+    Click="{x:Bind mainViewModel.Save}"       
              
    HorizontalAlignment="Center" >
-                
+
 
             </Button>
 
             <HyperlinkButton 
-     NavigateUri="Window2.xaml">
-                Navigate to Another Page
+       x:Name="navigateButton" Click="navigateButton_Click" Height="100" Width="640" Margin="5,-30,0,20" >
+                Don't you have an account?
+                SignUp
             </HyperlinkButton>
-          
+
         </StackPanel>
     </Grid>
 
