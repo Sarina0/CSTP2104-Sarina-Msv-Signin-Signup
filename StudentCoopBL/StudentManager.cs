@@ -70,7 +70,7 @@ namespace StudentCoopBL
         
         public void DeleteStudent()
         { var student3 = new Student();
-            var id2 = student3.id = 133;
+            var id2 = student3.id = 324;
             this.studentRepository.Delete(id2);
         }
         public void UpdateStudent()

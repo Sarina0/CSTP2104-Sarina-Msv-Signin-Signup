@@ -32,6 +32,22 @@
                 }
             }
         }
+        public string BirthDay
+        {
+            get
+            {
+                return this.student.date;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    this.student.date = value;
+                    this.RaisePropertyChanged(nameof(BirthDay));
+                }
+            }
+        }
 
         public string FirstName
         {

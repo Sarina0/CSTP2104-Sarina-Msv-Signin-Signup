@@ -16,7 +16,7 @@ namespace WinUiTest
     public partial class MainWindow : Window
     {
         public MainViewModel mainViewModel { get; }
-      
+
 
         public MainWindow()
         {
@@ -38,11 +38,14 @@ namespace WinUiTest
             }
 
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
 
+            // rootFrame.Navigate(typeof(Update), "passedID123");
             int some2 = this.mainViewModel.Get_ID();
+
 
             try
             {
@@ -50,7 +53,17 @@ namespace WinUiTest
 
                 if (some2 == 1)
                 {
-                    greetingOutput.Text = "Successful";
+                    //greetingOutput.Text = "Successful";
+                    Frame rootFrame = this.Content as Frame;
+
+                    if (rootFrame == null)
+                    {
+                        rootFrame = new Frame();
+                        this.Content = rootFrame;
+                    }
+
+                    rootFrame.Navigate(typeof(UpdatePage));
+
                 }
                 else
                 {
@@ -68,8 +81,6 @@ namespace WinUiTest
 
             }
 
-            //  Click="Button_Click"  
-            //   Click="{x:Bind mainViewModel.Save}"  
 
         }
 
@@ -93,8 +104,8 @@ namespace WinUiTest
 
 
     }
-       
 
-    }
+
+}
 
 

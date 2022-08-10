@@ -10,6 +10,7 @@
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="UpdatePage.xaml" />
     <None Remove="WindowII.xaml" />
   </ItemGroup>
 
@@ -23,6 +24,12 @@
   <ItemGroup>
     <ProjectReference Include="..\..\StudentCoopDal\StudentCoopDal.csproj" />
     <ProjectReference Include="..\..\StudentCoopViewModel\StudentCoopViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="UpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

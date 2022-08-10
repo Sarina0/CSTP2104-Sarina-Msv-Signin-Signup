@@ -20,12 +20,12 @@ namespace StudentCoopApp
             var studentManagerTest = new StudentManagerTest();
 
 
-            //studentManagerTest.DeleteStudentTest();
+            studentManagerTest.DeleteStudentTest();
             //studentManagerTest.GetStudents();
             //studentManagerTest.Get_This_StudentBy_id();
             //studentManagerTest.Update_Student();
 
-            int some2 = studentManagerTest.print_ID();
+            /*int some2 = studentManagerTest.print_ID();
 
            try
            {
@@ -49,7 +49,7 @@ namespace StudentCoopApp
            {
 
 
-           }
+           }*/
 
 
 

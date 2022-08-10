@@ -1,14 +1,12 @@
-﻿<Window
-    
-    x:Class="WinUiTest.MainWindow"
-   
+﻿<Page
+    x:Class="WinUiTest.UpdatePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUiTest"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:Name="LayoutRoot" Background="LightGoldenrodYellow" Width="640" Height="740" >
 
@@ -28,7 +26,7 @@
                 <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
 
             </TextBlock.RenderTransform>
-   Login Page
+    Update Page
         </TextBlock>
 
         <StackPanel>
@@ -37,10 +35,18 @@
             <TextBlock Height="250" />
 
             <TextBox  x:Name="nameInput"
-                     Header="Student ID:" 
+                     Header="Student ID" 
                      Width="200" HorizontalAlignment="Center" Text="{x:Bind mainViewModel.StudentViewModel.ID, Mode =Twoway}"   />
-            <TextBox   x:Name="namePass" 
-                     Header="Password" 
+            <TextBox   x:Name="namePass" Text="{x:Bind mainViewModel.StudentViewModel.FirstName, Mode =Twoway}" 
+                     Header="First Name:" 
+                      
+                     Width="200" HorizontalAlignment="Center" />
+            <TextBox   x:Name="namePass5" Text="{x:Bind mainViewModel.StudentViewModel.LastName, Mode =Twoway}" 
+                     Header="PhoneNumber:" 
+                      
+                     Width="200" HorizontalAlignment="Center" />
+            <TextBox   x:Name="namePass2" Text="{x:Bind mainViewModel.StudentViewModel.PhoneNum, Mode =Twoway}" 
+                     Header="PhoneNumber:" 
                       
                      Width="200" HorizontalAlignment="Center" />
 
@@ -49,10 +55,10 @@
 
             </StackPanel>
             <TextBlock  x:Name="greetingOutput"/>
-            <Button x:Name="Login" Height="40" Width="100" Margin="5,-30,0,20"  Background="LightCoral"
+            <Button x:Name="Update4" Height="40" Width="100" Margin="5,-30,0,20"  Background="LightCoral"
    
-   Content="Login"  
-  Click="Button_Click"    
+   Content="Update"  
+Click="{x:Bind mainViewModel.Save}"  
                     
              
    HorizontalAlignment="Center" >
@@ -60,13 +66,8 @@
 
             </Button>
 
-            <HyperlinkButton 
-       x:Name="navigateButton" Click="navigateButton_Click" Height="100" Width="640" Margin="5,-30,0,20" >
-                Don't you have an account?
-                SignUp
-            </HyperlinkButton>
+
 
         </StackPanel>
     </Grid>
-
-</Window>
+</Page>
