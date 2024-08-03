@@ -1,4 +1,4 @@
-# This is a Sign in Sign up C# and xaml project.
+# This is Sign in Sign up C# and xaml project.
 # Installation 
 - Open Visual Studio and clone the Project
 - Delete the bin and obj folders if the InitializeComponent is not defined (they might be hidden so enable it) and also install the necessary Windows 10 sdk(10.0.19041.0) versions.
